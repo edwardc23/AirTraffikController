@@ -5,6 +5,7 @@ import com.example.demo.Repository.DAOAir;
 import com.example.demo.Services.AirImpl;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -29,17 +30,30 @@ public class AirlineController {
         return DAOAir.saveAirTicket(airTraffic);
     }
 
-    @PutMapping("/editTicket/{id}")
-    public String editTicket(@PathVariable int id)
+    @PutMapping("/editTicket/{label}/{info}/{id}")
+    public String editTicket(@PathVariable int id, @PathVariable String label,@PathVariable String info)
     {
-       // DAOAir.updateTicket(id);
+       DAOAir.updateTicket(label,info,id);
+        return "";
+    }
+
+    @PutMapping("/editTicket/{label}/{time}/{id}")
+    public String editTicket(@PathVariable int id, @PathVariable String label, @PathVariable LocalDateTime time)
+    {
+       DAOAir.updateTicket(label,time,id);
+        return "";
+    }
+
+    @PutMapping("/editTicket/{label}/{price}/{id}")
+    public String editTicket(@PathVariable int id,@PathVariable Double price, @PathVariable String label)
+    {
+       DAOAir.updateTicket(label,price,id);
         return "";
     }
 
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable int id)
     {
-
         return DAOAir.deleteTicket(id);
     }
 

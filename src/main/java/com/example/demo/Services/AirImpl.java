@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -80,13 +81,44 @@ public class AirImpl implements DAOAir {
                 current.get(AirTraffic.class,id).setDestination(info);
                 transaction.commit();
                 return "Destination updated ";
-            case "depart": break;
-            case "arrival": break;
-            case "price": break;
+
 
         }
         return null;
     }
+    @Override
+    public String updateTicket(String label, LocalDateTime info, int id) {
+        Session current = entityManager.unwrap(Session.class);
+        Transaction transaction = current.beginTransaction();
+        switch (label){
+
+            case "depart":
+                current.get(AirTraffic.class,id).setDepart(info);
+                transaction.commit();
+                return "Departure time updated ";
+            case "arrival":
+                current.get(AirTraffic.class,id).setArrival(info);
+                transaction.commit();
+                return "Arrival time updated ";
+
+
+        }
+        return null;
+    }
+    @Override
+    public String updateTicket(String label, Double info, int id) {
+        Session current = entityManager.unwrap(Session.class);
+        Transaction transaction = current.beginTransaction();
+
+
+                current.get(AirTraffic.class,id).setPrice(info);
+                transaction.commit();
+                return "Price updated ";
+
+
+
+    }
+
 
 
 }

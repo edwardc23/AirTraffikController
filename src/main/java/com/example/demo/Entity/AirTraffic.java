@@ -30,10 +30,10 @@ public class AirTraffic {
     private LocalDateTime arrival;
 
     @Column(name="price")
-    private String price;
+    private Double price;
 
     public AirTraffic(String location, String destination, LocalDateTime depart,
-                      LocalDateTime arrival, String price) {
+                      LocalDateTime arrival, Double price) {
         this.location = location;
         this.destination = destination;
         this.depart = depart;
@@ -82,11 +82,11 @@ public class AirTraffic {
         this.arrival = arrival;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

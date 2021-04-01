@@ -26,7 +26,6 @@ public class AirlineController {
     @PostMapping("/addTicket")
     public String addTicket(@RequestBody AirTraffic airTraffic)
     {
-        airTraffic.toString();
         return DAOAir.saveAirTicket(airTraffic);
     }
 

@@ -33,11 +33,11 @@ class ControllerDataServices {
     }
 
     addAdmin(admin){ //for admin component**
-        return axios.post(`http://localhost:8080/addAdmin`,admin);
+        return axios.post(`http://localhost:8080/addLogin`,admin);
     }
 
     check(admin){ //for admin component**
-        return axios.post(`http://localhost:8080/checkAdmin`,admin)
+        return axios.get(`http://localhost:8080/check`,admin)
     }
     //_____________________________________________________________________________
 

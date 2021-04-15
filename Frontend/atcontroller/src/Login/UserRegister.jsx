@@ -1,13 +1,14 @@
 import React from 'react'
 import { Component } from "react"
-import ControllerDataServices from '../../services-HTTP/ControllerDataServices'
+import ControllerDataServices from "../services/ControllerDataServices";
+
 class UserRegister extends Component{
     constructor(props){
         super(props)
         this.state = {
             username: '',
             password: '',
-
+            airlinePassword:'/'
 
         }
 
@@ -22,7 +23,6 @@ class UserRegister extends Component{
         if(this.state.test==='Accepted')
         {
             this.props.history.push("/Homepage")
-
         }
 
     }
@@ -43,10 +43,12 @@ class UserRegister extends Component{
     handleSubmit(event){
         let user = {
             username: this.state.username,
-            password: this.state.password
+            password: this.state.password,
+            airlinePassword: this.state.airlinePassword
         }
         event.preventDefault()
         //console.log(user)
+        ControllerDataServices.addAdmin(user).then(r => console.log("User added"))
         ControllerDataServices.check(user)
             .then(value => {
                 this.setState({test: value.data})
@@ -63,7 +65,7 @@ class UserRegister extends Component{
                 <p>Password:</p>
                 <input type="text" className="text-input" value={this.state.password} onChange={this.handlePasswordChange}/>
                 <br></br>
-                <button className='btn btn-link'style={{fontSize:"10vh",marginLeft:"2vh",color:"white",backgroundColor:"darkred"}}>Submit</button>
+                <button className='btn btn-link'style={{fontSize:"10vh",marginLeft:"2vh",color:"white",backgroundColor:"darkblue"}}>Submit</button>
 
             </form>
 

@@ -21,15 +21,13 @@ public class LoginController {
         this.DAOLogin = DAOLogin;
     }
 
-
-
     @PostMapping("/addLogin")
     public String addLogin(@RequestBody Login login)
-    {
-        return DAOLogin.saveLogin(login);
-    }
+    { return DAOLogin.saveLogin(login); }
 
-    @GetMapping("/checkLogin")
+
+
+    @GetMapping("/check")
     public String checkLogin(@RequestBody Login login){
         return DAOLogin.findLogin(login);
     }

@@ -16,7 +16,7 @@ public class Login {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "airlinePassword")
+    @Column(name = "airline_password")
     private String airlinePassword;
 
     public Login(String username, String password, String airlinePassword) {

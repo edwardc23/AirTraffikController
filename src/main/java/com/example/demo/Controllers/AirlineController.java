@@ -50,8 +50,8 @@ public class AirlineController {
         return "";
     }
 
-    @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable int id)
+    @DeleteMapping("/buy")
+    public String delete(@RequestParam int id)
     {
         return DAOAir.deleteTicket(id);
     }

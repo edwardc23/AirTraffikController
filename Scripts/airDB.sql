@@ -26,7 +26,7 @@ CREATE TABLE Login (
                 login_Id INT AUTO_INCREMENT NOT NULL,
                 username VARCHAR(45) NOT NULL,
 				password VARCHAR(45) NOT NULL,
-                airlinePassword VARCHAR(20) NOT NULL,
+                airline_password VARCHAR(20) NOT NULL,
                 PRIMARY KEY (login_Id)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 

@@ -16,18 +16,19 @@ class Login extends Component{
         this.handleSubmit = this.handleSubmit.bind(this)
         this.checkLogin = this.checkLogin.bind(this)
         this.checkAirlineLogin = this.checkAirlineLogin.bind(this)
+        this.addAirline = this.addAirline.bind(this)
     }
 
-    checkLogin(){
-        if(this.state.test==='Accepted')
+    checkLogin(event){
+        if(event ==='Accepted')
         {
-            this.props.history.push("/Homepage")
+            this.props.history.push("/Homepage.jsx")
         }
     }
-    checkAirlineLogin(){
-        if(this.state.test==='Airline Confirmed')
+    checkAirlineLogin(event){
+        if(event ==='Airline Confirmed')
         {
-            this.props.history.push("/Home")
+            this.props.history.push("/Home.jsx")
         }
     }
 
@@ -53,16 +54,24 @@ class Login extends Component{
             username: this.state.username,
             password: this.state.password,
             airlinePassword: this.state.airlinePassword
-            
         }
         event.preventDefault()
         console.log(user)
         ControllerDataServices.check(user)
         .then(value => {
-            this.setState({test: value.data})
-            this.checkAirlineLogin()
-            this.checkLogin()
+            console.log(value.data)
+            this.checkAirlineLogin(value.data)
+            this.checkLogin(value.data)
         })
+    }
+    addAirline()
+    {
+        return(
+            <div>
+                <p>Airline Password:</p>
+        <input type="text" className="text-input" value={this.state.airlinePassword} onChange={this.handleAirlinePasswordChange}/>)
+    </div>
+        )
     }
     render(){
         return(
@@ -71,8 +80,8 @@ class Login extends Component{
                 <input type="text" className="text-input" value={this.state.username} onChange={this.handleUsernameChange}/>
                 <p>Password:</p>
                 <input type="text" className="text-input" value={this.state.password} onChange={this.handlePasswordChange}/>
-                <p>Airline Password:</p>
-                <input type="text" className="text-input" value={this.state.airlinePassword} onChange={this.handleAirlinePasswordChange}/>
+                <button type={"button"} onClick={()=> this.addAirline()}>Airline</button>
+                {this.addAirline()}
                 <br></br>
                 <button className='btn btn-link'style={{fontSize:"10vh",marginLeft:"2vh",color:"white",backgroundColor:"darkred"}}>Submit</button>
                 

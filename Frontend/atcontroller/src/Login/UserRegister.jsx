@@ -22,7 +22,7 @@ class UserRegister extends Component{
     testP(){
         if(this.state.test==='Accepted')
         {
-            this.props.history.push("/Homepage")
+            this.props.history.push("/Homepage.jsx")
         }
 
     }

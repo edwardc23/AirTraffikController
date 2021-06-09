@@ -23,7 +23,7 @@ class AirlineRegister extends Component{
     testP(){
         if(this.state.test==='Airline Confirmed')
         {
-            this.props.history.push("/Home")
+            this.props.history.push("/Home.jsx")
 
         }
 

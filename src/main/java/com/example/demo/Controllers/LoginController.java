@@ -6,10 +6,7 @@ import com.example.demo.Repository.DAOLogin;
 import com.example.demo.Services.LoginImpl;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000"})
 @RestController
 public class LoginController {
     private final LoginImpl loginImpl;
@@ -27,9 +24,11 @@ public class LoginController {
 
 
 
-    @GetMapping("/check")
+    @PostMapping("/check")
     public String checkLogin(@RequestBody Login login){
-        return DAOLogin.findLogin(login);
+        String response = DAOLogin.findLogin(login);
+        return response;
+
     }
 
 

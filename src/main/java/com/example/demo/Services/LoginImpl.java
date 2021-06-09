@@ -40,7 +40,7 @@ public class LoginImpl implements DAOLogin {
         for(int i = 0;i<results.size();i++){
 
             login.setLoginID(i+1);
-            if(results.contains(login))
+            if(results.get(i).getUsername().equals(login.getUsername())&&results.get(i).getPassword().equals(login.getPassword()))
             {
 
                 if(login.getAirlinePassword().equals("/")){
